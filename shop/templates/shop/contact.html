@@ -1,0 +1,42 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}  Contact Us | FlashKart {% endblock %}
+
+{% block body %}
+<div class="container my-3">
+  <div class="row">
+    <div class="col-md-5 offset-md-3" align="center">
+    <h2>Contact Us</h2>
+    </div>
+  </div>
+</div>
+
+
+<form action="/shop/contact/" method="post">{% csrf_token %}
+  <div class="container">
+    <div class="row ">
+    <div class="col-md-5 offset-md-3">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" name='name' placeholder="Enter Your Name">
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" name='email' placeholder="Enter Your Email">
+  </div>
+  <div class="mb-3">
+    <label for="name" class="form-label">Phone Number</label>
+    <input type="tel" class="form-control" id="phone" name='phone' placeholder="Enter Your Phone Number">
+  </div>
+  <div class="form-group ">
+    <label for="desc">Message</label>
+    <textarea class="form-control" id="desc" name='desc' rows="3"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+     </div>
+      </div>
+    </div>
+</form>
+
+{% endblock %}

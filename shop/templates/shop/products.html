@@ -1,0 +1,56 @@
+{% extends 'shop/base.html' %}
+
+{% block title %} {{products.product_name}} | FlashKart {% endblock %}
+
+{% block body %}
+
+<div class="container my-5">
+    <div class="row">
+    <div class="col-md-6 my-3">
+        <div class="row">
+            <img src="/media/{{products.images}}" width="500px" height="398px">
+        </div>
+            <div class="row">
+                <button class="btn btn-primary my-3">Buy Now</button>
+                <button class="btn btn-primary my-3 mx-3 ">Add to Cart</button>
+            </div>
+        </div>
+        <div class="col-md-6 my-3">
+            <h5>{{products.product_name}}</h5>
+            <p><b>M.R.P: Rs</b>{{products.price}}</p>
+            <p>{{products.description}}</p>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+if(localStorage.getItem('cart') == null){
+var cart = {};
+}
+else
+{
+cart = JSON.parse(localStorage.getItem('cart'));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+}
+
+$('.cart').click(function(){
+var idstr = this.id.toString();
+if (cart[idstr] != undefined){
+cart[idstr] = cart[idstr] + 1;
+}
+else
+{
+cart[idstr] = 1;
+}
+console.log(cart);
+localStorage.setItem('cart', JSON.stringify(cart));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+
+});
+
+</script>
+
+{% endblock %}
